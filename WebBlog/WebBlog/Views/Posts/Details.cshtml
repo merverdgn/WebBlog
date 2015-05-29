@@ -1,0 +1,51 @@
+﻿@model WebBlog.Models.Post
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Post</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.TITLE)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TITLE)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CONTENT)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CONTENT)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.AUTHOR)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.AUTHOR)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CREATEDATE)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CREATEDATE)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.ID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
