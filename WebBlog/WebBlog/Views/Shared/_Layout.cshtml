@@ -58,38 +58,44 @@
             <!-- END RESPONSIVE MENU TOGGLER -->
             <!-- BEGIN PAGE ACTIONS -->
             <!-- DOC: Remove "hide" class to enable the page header actions -->
-            <div class="page-actions">
-                @if (Session["USERNAME"] != null)
-                {
-                    <div class="btn-group">
-                        <button type="button" class="btn red-haze btn-sm dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-close-others="true">
-                            <span class="hidden-sm hidden-xs">Gönderi Oluştur&nbsp;</span><i class="fa fa-angle-down"></i>
-                        </button>
-                        <ul class="dropdown-menu" role="menu">
-                            <li>
-                                <a href="/Posts/Create">
-                                    <i class="icon-docs"></i> Yeni gönderi
-                                </a>
-                            </li>
-                            <li>
-                                <a href="/Posts">
-                                    <i class="icon-docs"></i> Gönderilerim
-                                </a>
-                            </li>
-                        </ul>
-                    </div>
-                }
-                else
-                {
-                    <div id="disablePost" title="Gönderi yapabilmek için lütfen oturum açın." class="btn-group">
-                        <button type="button" disabled class="btn red-haze btn-sm dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-close-others="true">
-                            <span class="hidden-sm hidden-xs">Gönderi Oluştur&nbsp;</span><i class="fa fa-angle-down"></i>
-                        </button>
+            <div class="page-actions col-md-6">
+                <div style="float:left">
+                    @if (Session["USERNAME"] != null)
+                    {
+                        <div class="btn-group">
+                            <button type="button" class="btn red-haze btn-sm dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-close-others="true">
+                                <span class="hidden-sm hidden-xs">Gönderi Oluştur&nbsp;</span><i class="fa fa-angle-down"></i>
+                            </button>
+                            <ul class="dropdown-menu" role="menu">
+                                <li>
+                                    <a href="/Posts/Create">
+                                        <i class="icon-docs"></i> Yeni gönderi
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="/Posts">
+                                        <i class="icon-docs"></i> Gönderilerim
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    }
+                    else
+                    {
+                        <div id="disablePost" title="Gönderi yapabilmek için lütfen oturum açın." class="btn-group">
+                            <button type="button" disabled class="btn red-haze btn-sm dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-close-others="true">
+                                <span class="hidden-sm hidden-xs">Gönderi Oluştur&nbsp;</span><i class="fa fa-angle-down"></i>
+                            </button>
 
-                    </div>
-                }
+                        </div>
+                    }
+                </div>
+                <div id="loginWarningLabel" class="alert alert-warning" style="float:left; margin-left:10px; margin-top:-5px;" hidden="hidden">
+                    <strong>Gönderi oluşturabilmeniz için giriş yapmanız gerekmektedir..</strong>
+                </div>
             </div>
             <!-- END PAGE ACTIONS -->
+        
             <!-- BEGIN PAGE TOP -->
             <div class="page-top">
 
@@ -258,8 +264,8 @@
 
             $("#disablePost").click(function () {
 
-                alert("Gönderi yapabilmek için lütfen giriş yapınız.")
-
+               
+                $("#loginWarningLabel").removeProp("hidden")
 
             });
 

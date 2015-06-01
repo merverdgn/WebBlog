@@ -20,7 +20,7 @@ namespace WebBlog.Controllers
         public ActionResult Index(int? page)
         {
            
-            int pageSize = 3;
+            int pageSize = 4;
             int pageNumber = (page ?? 1);            
          
             return View(db.Posts.ToList().OrderByDescending(e => e.CREATEDATE).ToList().ToPagedList(pageNumber, pageSize));

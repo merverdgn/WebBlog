@@ -47,9 +47,7 @@ namespace WebBlog.Controllers
             {
 
                 Session["USERNAME"] = myUser.USERNAME.ToString();
-                Session["FULLNAME"] = myUser.FIRSTNAME.ToString() + " " + myUser.LASTNAME.ToString();
-              
-               
+                Session["FULLNAME"] = myUser.FIRSTNAME.ToString() + " " + myUser.LASTNAME.ToString();               
 
                 return RedirectToAction("../Home/Index");
 
@@ -58,7 +56,7 @@ namespace WebBlog.Controllers
             else
             {
 
-                ViewBag.Status = "Oturum açma işlemi başarısız.";
+                ViewBag.Status = "Kullanıcı adı veya şifre hatalı.";
 
             }
 
