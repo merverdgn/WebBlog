@@ -1,4 +1,4 @@
-﻿@model IEnumerable<WebBlog.Models.Post>
+﻿@model IEnumerable<WebBlog.Models.User>
 
 @{
     ViewBag.Title = "Index";
@@ -13,34 +13,39 @@
 <table class="table">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.TITLE)
+            @Html.DisplayNameFor(model => model.FIRSTNAME)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.CONTENT)
+            @Html.DisplayNameFor(model => model.LASTNAME)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.AUTHOR)
+            @Html.DisplayNameFor(model => model.USERNAME)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.CREATEDATE)
+            @Html.DisplayNameFor(model => model.PASSWORD)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.EMAIL)
         </th>
         <th></th>
     </tr>
 
 @foreach (var item in Model) {
-    
     <tr>
         <td>
-            @Html.DisplayFor(modelItem => item.TITLE)
+            @Html.DisplayFor(modelItem => item.FIRSTNAME)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.CONTENT)
+            @Html.DisplayFor(modelItem => item.LASTNAME)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.AUTHOR)
+            @Html.DisplayFor(modelItem => item.USERNAME)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.CREATEDATE)
+            @Html.DisplayFor(modelItem => item.PASSWORD)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.EMAIL)
         </td>
         <td>
             @Html.ActionLink("Edit", "Edit", new { id=item.ID }) |

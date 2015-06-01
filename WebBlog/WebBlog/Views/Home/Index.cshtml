@@ -9,6 +9,19 @@
 <link href="../../assets/admin/pages/css/blog.css" rel="stylesheet" type="text/css" />
 <link href="../../assets/admin/pages/css/news.css" rel="stylesheet" type="text/css" />
 <!-- END PAGE LEVEL STYLES -->
+
+   <!-- BEGIN PAGE BREADCRUMB -->
+<ul class="page-breadcrumb breadcrumb">
+    <li>
+        <a href="/Home">Anasayfa</a>
+        <i class="fa fa-circle"></i>
+    </li>
+
+
+</ul>
+<!-- END PAGE BREADCRUMB -->
+
+
 <!-- BEGIN PAGE CONTENT-->
 <div class="portlet light">
     <div class="portlet-body">
@@ -18,9 +31,6 @@
                     <div class="col-md-9 col-sm-8 article-block">
 
                         <h1 style="margin-top:0px">Güncel Yazılar</h1>
-
-
-
 
                         @foreach (var item in Model)
                         {
@@ -61,10 +71,6 @@
                             <hr>
                         }
 
-
-
-
-
                     </div>
                     <!--end col-md-9-->
                     <div class="col-md-3 col-sm-4 blog-sidebar">
@@ -83,8 +89,8 @@
                                     </span>
                                     <em>Tarih: @Html.DisplayFor(modelItem => item.CREATEDATE)</em>
                                     <em>
-                                        <i class="fa fa-tags"></i>
-                                        Money, Business, Google
+                                        <i class="fa fa-user"></i>
+                                      Yazar:  @Html.DisplayFor(modelItem => item.AUTHOR)
                                     </em>
                                     <i class="fa fa-briefcase top-news-icon"></i>
                                 </a>

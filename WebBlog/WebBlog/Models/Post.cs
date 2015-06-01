@@ -17,9 +17,17 @@ namespace WebBlog.Models
         public DateTime CREATEDATE { get; set; }
     }
 
+
+
+
     public class LocalDBContext : DbContext
     {
+
         public DbSet<Post> Posts { get; set; }
+        public DbSet<User> Users { get; set; }
+
+
+
     }
 
 

@@ -17,5 +17,6 @@ namespace WebBlog.Controllers
         {
             return View(db.Posts.ToList());
         }
+
     }
 }
