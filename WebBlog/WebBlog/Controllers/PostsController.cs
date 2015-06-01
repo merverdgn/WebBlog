@@ -14,6 +14,8 @@ namespace WebBlog.Controllers
     {
         private LocalDBContext db = new LocalDBContext();
 
+        
+
         // GET: Posts
         public ActionResult Index()
         {
@@ -38,6 +40,8 @@ namespace WebBlog.Controllers
         // GET: Posts/Create
         public ActionResult Create()
         {
+            ViewBag.DateNow = DateTime.Now;
+
             return View();
         }
 
@@ -48,6 +52,10 @@ namespace WebBlog.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "ID,TITLE,CONTENT,AUTHOR,CREATEDATE")] Post post)
         {
+            post.AUTHOR = @Session["FULLNAME"].ToString();
+            post.CREATEDATE = DateTime.Now;           
+
+
             if (ModelState.IsValid)
             {
                 db.Posts.Add(post);

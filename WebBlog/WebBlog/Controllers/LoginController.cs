@@ -46,7 +46,10 @@ namespace WebBlog.Controllers
             if (myUser != null)    //User was found
             {
 
-                Session["USERNAME"] = user.USERNAME.ToString();
+                Session["USERNAME"] = myUser.USERNAME.ToString();
+                Session["FULLNAME"] = myUser.FIRSTNAME.ToString() + " " + myUser.LASTNAME.ToString();
+              
+               
 
                 return RedirectToAction("../Home/Index");
 
