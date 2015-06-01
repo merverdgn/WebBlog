@@ -59,7 +59,7 @@
             <!-- BEGIN PAGE ACTIONS -->
             <!-- DOC: Remove "hide" class to enable the page header actions -->
             <div class="page-actions">
-                @if (Session["FULLNAME"] != null)
+                @if (Session["USERNAME"] != null)
                 {
                     <div class="btn-group">
                         <button type="button" class="btn red-haze btn-sm dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-close-others="true">
@@ -81,7 +81,7 @@
                 }
                 else
                 {
-                    <div title="Gönderi yapabilmek için lütfen oturum açın." class="btn-group">
+                    <div id="disablePost" title="Gönderi yapabilmek için lütfen oturum açın." class="btn-group">
                         <button type="button" disabled class="btn red-haze btn-sm dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-close-others="true">
                             <span class="hidden-sm hidden-xs">Gönderi Oluştur&nbsp;</span><i class="fa fa-angle-down"></i>
                         </button>
@@ -99,19 +99,26 @@
                     {
                         <ul class="nav navbar-nav pull-right">
 
-
                             <!-- BEGIN USER LOGIN DROPDOWN -->
                             <!-- DOC: Apply "dropdown-dark" class after below "dropdown-extended" to change the dropdown styte -->
                             <li class="dropdown dropdown-user dropdown-dark">
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-close-others="true">
 
                                     <span class="username username-hide-on-mobile">
-                                        @Session["USERNAME"]
+                                        @if (Session["FULLNAME"] != null)
+                                        {
+                                            @Session["FULLNAME"]
+                                        }
+                                        else
+                                        {
+                                            @Session["USERNAME"]
+                                        }
+
                                     </span>
                                     <!-- DOC: Do not remove below empty space(&nbsp;) as its purposely used -->
                                     <img alt="" class="img-circle" src="../../assets/admin/layout4/img/avatar9.jpg" />
                                 </a>
-                                <ul class="dropdown-menu dropdown-menu-default">                                   
+                                <ul class="dropdown-menu dropdown-menu-default">
                                     <li>
                                         <a href="/Login/Logout">
                                             <i class="icon-key"></i> Çıkış Yap
@@ -127,7 +134,7 @@
                     else
                     {
 
-                        <div style="margin-right:30px; margin-top:20px;">
+                        <div style="margin-right:40px; margin-top:20px;">
                             <a href="/Login/VerifyLogin" type="submit" class="btn btn-success">Giriş yapın</a>
                         </div>
 
@@ -197,7 +204,6 @@
                 <!-- /.modal -->
                 <!-- END SAMPLE PORTLET CONFIGURATION MODAL FORM-->
                 <!-- BEGIN PAGE HEADER-->
-               
                 <!-- END PAGE HEADER-->
                 <!-- BEGIN PAGE CONTENT-->
                 <div class="portlet light">
@@ -210,9 +216,9 @@
     </div>
     <!-- END CONTAINER -->
     <!-- BEGIN FOOTER -->
-    <div class="page-footer">
+    <div class="page-footer" style="float:right;">
         <div class="page-footer-inner">
-            2014 &copy; Metronic by keenthemes.
+            2015 &copy; Merve Erdoğan.
         </div>
         <div class="scroll-to-top">
             <i class="icon-arrow-up"></i>
@@ -244,12 +250,25 @@
     <script>
         jQuery(document).ready(function () {
 
+
+
             Metronic.init(); // init metronic core components
             Layout.init(); // init current layout
+
+
+            $("#disablePost").click(function () {
+
+                alert("Gönderi yapabilmek için lütfen giriş yapınız.")
+
+
+            });
+
 
         });
     </script>
     <!-- END JAVASCRIPTS -->
 </body>
+
+
 
 </html>

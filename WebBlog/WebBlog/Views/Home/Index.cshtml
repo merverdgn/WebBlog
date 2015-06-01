@@ -1,4 +1,5 @@
-﻿@model IEnumerable<WebBlog.Models.Post>
+﻿@model PagedList.IPagedList<WebBlog.Models.Post>
+@using PagedList.Mvc;
 
 @{
     ViewBag.Title = "Index";
@@ -9,7 +10,6 @@
 <link href="../../assets/admin/pages/css/blog.css" rel="stylesheet" type="text/css" />
 <link href="../../assets/admin/pages/css/news.css" rel="stylesheet" type="text/css" />
 <!-- END PAGE LEVEL STYLES -->
-
 <!-- BEGIN PAGE HEAD -->
 <div class="page-head">
     <!-- BEGIN PAGE TITLE -->
@@ -85,27 +85,47 @@
                         <h3 style="margin-top:0px">Popüler makaleler</h3>
                         <div class="top-news">
 
+                            @{
 
-                            @foreach (var item in Model)
-                            {
+                                string[] color = { "purple", "red", "green", "blue", "yellow" };
+                                string[] icon = { "fa-thumbs-up", "fa-mortar-board", "fa-user", "fa-pencil", "fa-paper-plane" };
+                                string TITLE = "";
+                                string subTITLE = "";
+                                Random rnd = new Random();
+                                int i = 0; // creates a number between 1 and 12
+                                foreach (var item in Model.Take(10))
+                                {
+                                    TITLE = item.TITLE.ToString();
+                                    if (TITLE.Length > 25)
+                                    {
 
-                                <a href="#" class="btn green">
-                                    <span>
+                                        subTITLE = TITLE.Substring(0, 26) + "....";
 
-                                        @Html.DisplayFor(modelItem => item.TITLE)
+                                    }
+                                    else
+                                    {
 
-                                    </span>
-                                    <em>Tarih: @Html.DisplayFor(modelItem => item.CREATEDATE)</em>
-                                    <em>
-                                        <i class="fa fa-user"></i>
-                                        Yazar:  @Html.DisplayFor(modelItem => item.AUTHOR)
-                                    </em>
-                                    <i class="fa fa-briefcase top-news-icon"></i>
-                                </a>
+                                        subTITLE = TITLE;
 
+                                    }
+
+                                    i = rnd.Next(0, 4);
+                                    <label></label>
+                                    <a href="#" class="btn @color[i]">
+                                        <span>
+                                            @subTITLE
+                                        </span>
+                                        <em>Tarih: @Html.DisplayFor(modelItem => item.CREATEDATE)</em>
+                                        <em>
+                                            <i class="fa fa-user"></i>
+                                            Yazar:  @Html.DisplayFor(modelItem => item.AUTHOR)
+                                        </em>
+                                        <i class="fa @icon[i] top-news-icon"></i>
+                                    </a>
+
+                                }
                             }
 
-                            red green blue yellow purple
                         </div>
                         <div class="space20">
                         </div>
@@ -115,47 +135,15 @@
                     <!--end col-md-3-->
                 </div>
                 <ul class="pagination pull-right">
-                    <li>
-                        <a href="#">
-                            <i class="fa fa-angle-left"></i>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="#">
-                            1
-                        </a>
-                    </li>
-                    <li>
-                        <a href="#">
-                            2
-                        </a>
-                    </li>
-                    <li>
-                        <a href="#">
-                            3
-                        </a>
-                    </li>
-                    <li>
-                        <a href="#">
-                            4
-                        </a>
-                    </li>
-                    <li>
-                        <a href="#">
-                            5
-                        </a>
-                    </li>
-                    <li>
-                        <a href="#">
-                            6
-                        </a>
-                    </li>
-                    <li>
-                        <a href="#">
-                            <i class="fa fa-angle-right"></i>
-                        </a>
-                    </li>
+                
+                    Toplam @Model.PageCount sayfadan @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber). sayfayı görüntülüyorsunuz.
+
+
+                    @Html.PagedListPager(Model, page => Url.Action("Index", new { page, sortOrder = ViewBag.CurrentSort, currentFilter = ViewBag.CurrentFilter }))
                 </ul>
+
+
+              
             </div>
         </div>
     </div>
