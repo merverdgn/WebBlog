@@ -1,12 +1,44 @@
 ﻿@model WebBlog.Models.User
 
 @{
+    if (Session["USERNAME"] != null)
+    {
+
+        Response.Redirect("~/Home/Index");
+
+    }
+}
+
+@{
     ViewBag.Title = "Oturum Aç";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Oturum Aç</h2>
 
+<!-- BEGIN PAGE HEAD -->
+<div class="page-head">
+    <!-- BEGIN PAGE TITLE -->
+    <div class="page-title">
+        <h1>Giriş <small>Yeni gönderi yayınlamak ve geçmiş gönderilerinizi düzenlemek için giriş yapın</small></h1>
+    </div>
+    <!-- END PAGE TITLE -->
+
+</div>
+<!-- END PAGE HEAD -->
+<!-- BEGIN PAGE BREADCRUMB -->
+<ul class="page-breadcrumb breadcrumb">
+    <li>
+        <a href="/Home">Anasayfa</a>
+        <i class="fa fa-circle"></i>
+    </li>
+    <li>
+        <a href="/Login/VerifyLogin">Giriş</a>
+        <i class="fa fa-circle"></i>
+    </li>
+
+
+</ul>
+<!-- END PAGE BREADCRUMB -->
 @using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
@@ -30,7 +62,7 @@
                 @Html.ValidationMessageFor(model => model.PASSWORD, "", new { @class = "text-danger" })
                 <span class="label-danger"> @ViewBag.Status </span>
             </div>
-          
+
         </div>
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
@@ -38,7 +70,7 @@
             </div>
         </div>
 
-      
+
 
     </div>
 }

@@ -10,7 +10,17 @@
 <link href="../../assets/admin/pages/css/news.css" rel="stylesheet" type="text/css" />
 <!-- END PAGE LEVEL STYLES -->
 
-   <!-- BEGIN PAGE BREADCRUMB -->
+<!-- BEGIN PAGE HEAD -->
+<div class="page-head">
+    <!-- BEGIN PAGE TITLE -->
+    <div class="page-title">
+        <h1>Blog <small>Son yazılar ve popüler makaleler</small></h1>
+    </div>
+    <!-- END PAGE TITLE -->
+
+</div>
+<!-- END PAGE HEAD -->
+<!-- BEGIN PAGE BREADCRUMB -->
 <ul class="page-breadcrumb breadcrumb">
     <li>
         <a href="/Home">Anasayfa</a>
@@ -20,8 +30,6 @@
 
 </ul>
 <!-- END PAGE BREADCRUMB -->
-
-
 <!-- BEGIN PAGE CONTENT-->
 <div class="portlet light">
     <div class="portlet-body">
@@ -77,7 +85,7 @@
                         <h3 style="margin-top:0px">Popüler makaleler</h3>
                         <div class="top-news">
 
-                            
+
                             @foreach (var item in Model)
                             {
 
@@ -90,7 +98,7 @@
                                     <em>Tarih: @Html.DisplayFor(modelItem => item.CREATEDATE)</em>
                                     <em>
                                         <i class="fa fa-user"></i>
-                                      Yazar:  @Html.DisplayFor(modelItem => item.AUTHOR)
+                                        Yazar:  @Html.DisplayFor(modelItem => item.AUTHOR)
                                     </em>
                                     <i class="fa fa-briefcase top-news-icon"></i>
                                 </a>

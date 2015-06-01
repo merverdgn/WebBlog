@@ -1,18 +1,28 @@
 ﻿@model WebBlog.Models.Post
 
 @{
+    if (Session["USERNAME"] == null)
+    {
+
+        Response.Redirect("~/Home/Index");
+
+    }
+
+}
+
+@{
     ViewBag.Title = "Details";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Details</h2>
+<h2>Detaylar</h2>
 
 <div>
-    <h4>Post</h4>
+
     <hr />
     <dl class="dl-horizontal">
         <dt>
-            @Html.DisplayNameFor(model => model.TITLE)
+            Başlık
         </dt>
 
         <dd>
@@ -20,7 +30,7 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.CONTENT)
+           İçerik
         </dt>
 
         <dd>
@@ -28,7 +38,7 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.AUTHOR)
+           Yazar
         </dt>
 
         <dd>
@@ -36,7 +46,7 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.CREATEDATE)
+            Oluşturma Tarihi
         </dt>
 
         <dd>
@@ -46,6 +56,6 @@
     </dl>
 </div>
 <p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.ID }) |
-    @Html.ActionLink("Back to List", "Index")
+    @Html.ActionLink("Düzenle", "Edit", new { id = Model.ID }) |
+    @Html.ActionLink("Listeye geri dön", "Index")
 </p>

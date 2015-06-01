@@ -1,53 +1,106 @@
 ﻿@model IEnumerable<WebBlog.Models.Post>
 
+@{    
+    if (Session["USERNAME"] == null)
+    {
+
+        Response.Redirect("~/Home/Index");
+        
+    }   
+    
+}
+
 @{
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Index</h2>
+<!-- BEGIN PAGE HEAD -->
+<div class="page-head">
+    <!-- BEGIN PAGE TITLE -->
+    <div class="page-title">
+        <h1>Gönderi listele <small>Burada daha önce oluşturduğunuz gönderileri listeleyebilirsiniz.</small></h1>
+    </div>
+    <!-- END PAGE TITLE -->
 
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.TITLE)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.CONTENT)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.AUTHOR)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.CREATEDATE)
-        </th>
-        <th></th>
-    </tr>
+</div>
+<!-- END PAGE HEAD -->
+<!-- BEGIN PAGE BREADCRUMB -->
+<ul class="page-breadcrumb breadcrumb">
+    <li>
+        <a href="/Home">Anasayfa</a>
+        <i class="fa fa-circle"></i>
+    </li>
+    <li>
+        <a href="/Posts/Index">Gönderi listesi</a>
+        <i class="fa fa-circle"></i>
+    </li>
+ 
 
-@foreach (var item in Model) {
+
+</ul>
+<!-- END PAGE BREADCRUMB -->
+
+
+
+	<!-- BEGIN SAMPLE TABLE PORTLET-->
+<div class="portlet box green-haze">
+    <div class="portlet-title">
+        <div class="caption">
+            <button id="sample_editable_1_new" class="btn default" style="margin-bottom:5px;">
+                @Html.ActionLink("Yeni gönderi oluştur", "Create") &nbsp;<i class="fa fa-plus"></i>
+            </button>
+        </div>
     
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.TITLE)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.CONTENT)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.AUTHOR)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.CREATEDATE)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.ID }) |
-            @Html.ActionLink("Details", "Details", new { id=item.ID }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.ID })
-        </td>
-    </tr>
-}
+    </div>
+    <div class="portlet-body flip-scroll">
+        <table class="table table-bordered table-striped table-condensed flip-content">
+            <thead class="flip-content">
+                <tr>
+                    <th width="20%">
+                        Başlık
+                    </th>
+                    <th width="35%">
+                        İçerik
+                    </th>
+                    <th width="8%">
+                        Yazar
+                    </th>
+                    <th width="8%">
+                        Oluşturma Tarihi
+                    </th>
+                    <th width="10%">
 
-</table>
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.TITLE)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.CONTENT)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.AUTHOR)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.CREATEDATE)
+                        </td>
+                        <td>
+                            @Html.ActionLink("Düzenle", "Edit", new { id = item.ID }) |
+                            @Html.ActionLink("Detay", "Details", new { id = item.ID }) |
+                            @Html.ActionLink("Sil", "Delete", new { id = item.ID })
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
+<!-- END SAMPLE TABLE PORTLET-->
+

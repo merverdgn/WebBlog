@@ -1,6 +1,16 @@
 ﻿@model WebBlog.Models.User
 
 @{
+    if (Session["USERNAME"] == null)
+    {
+
+        Response.Redirect("~/Home/Index");
+
+    }
+
+}
+
+@{
     ViewBag.Title = "Edit";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
