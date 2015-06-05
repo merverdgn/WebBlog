@@ -17,7 +17,8 @@
 
 <link href="../../assets/global/plugins/bootstrap-fileinput/bootstrap-fileinput.css" rel="stylesheet" type="text/css" />
 <link href="../../assets/admin/pages/css/profile-old.css" rel="stylesheet" type="text/css" />
-<script type="text/javascript" src="../../assets/global/plugins/bootstrap-fileinput/bootstrap-fileinput.js"></script>
+
+
 
 <!-- BEGIN PAGE HEAD -->
 <div class="page-head">
@@ -46,25 +47,30 @@
 
 
 </ul>
-<!-- END PAGE BREADCRUMB -->
-@using (Html.BeginForm())
-{
-    @Html.AntiForgeryToken()
+<div class="row">
+    <div class="col-md-12">
+        <div class="row profile-account">
+            <div class="col-md-6" style="margin-left:120px;">
+                <form action="/Posts/Upload" method="post" enctype="multipart/form-data">
 
-    <div class="row">
-        <div class="col-md-12">
 
-            @*<form action="/Home/Upload" method="post" enctype="multipart/form-data">
+                    <input type="file" name="photo" id="photo" />
 
-                <label for="photo">Photo:</label>
-                <input type="file" name="photo" id="photo" />
-                <input type="submit" value="Upload" />
+                    <input type="submit" value="Gönder" />
+                </form>
 
-            </form>*@
+            </div>
 
         </div>
 
+
     </div>
+
+</div>
+<!-- END PAGE BREADCRUMB -->
+@using (Html.BeginForm(null, null, FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    @Html.AntiForgeryToken()
 
     <div class="form-horizontal">
         <hr />
@@ -86,7 +92,11 @@
             </div>
         </div>
 
-        
+        @*<div class="form-group" style="margin-left:220px;">
+                <label for="file">Filename:</label>
+                <input type="file" name="file" id="file" />
+            </div>*@
+
 
         <div class="form-group">
             @Html.Label("Yazar", htmlAttributes: new { @class = "control-label col-md-2" })
@@ -105,7 +115,7 @@
 
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Oluştur" class="btn btn-default" />
+                <input type="submit" value="Upload" class="btn btn-default" />
             </div>
         </div>
     </div>

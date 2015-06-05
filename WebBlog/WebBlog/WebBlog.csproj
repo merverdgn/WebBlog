@@ -4402,7 +4402,7 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="App_Data\test\" />
+    <Folder Include="App_Data\" />
     <Folder Include="assets\global\plugins\angularjs\plugins\angular-file-upload\uploads\" />
     <Folder Include="assets\global\plugins\jquery-file-upload\server\php\files\thumbnail\" />
     <Folder Include="Content\css\" />

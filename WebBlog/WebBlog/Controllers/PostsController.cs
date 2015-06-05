@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Data;
 using System.Data.Entity;
+using System.IO;
 using System.Linq;
 using System.Net;
 using System.Web;
@@ -14,14 +15,16 @@ namespace WebBlog.Controllers
     {
         private LocalDBContext db = new LocalDBContext();
 
-        
+
 
         // GET: Posts
         public ActionResult Index()
         {
+
             return View(db.Posts.ToList());
         }
 
+      
         // GET: Posts/Details/5
         public ActionResult Details(int? id)
         {
@@ -37,10 +40,11 @@ namespace WebBlog.Controllers
             return View(post);
         }
 
-        // GET: Posts/Create
-        public ActionResult Create()
+        // GET: Posts/Create       
+        public ActionResult Create(HttpPostedFileBase file)
         {
             ViewBag.DateNow = DateTime.Now;
+
 
             return View();
         }
@@ -53,7 +57,7 @@ namespace WebBlog.Controllers
         public ActionResult Create([Bind(Include = "ID,TITLE,CONTENT,AUTHOR,CREATEDATE")] Post post)
         {
             post.AUTHOR = @Session["FULLNAME"].ToString();
-            post.CREATEDATE = DateTime.Now;           
+            post.CREATEDATE = DateTime.Now;
 
 
             if (ModelState.IsValid)
@@ -62,6 +66,8 @@ namespace WebBlog.Controllers
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
+
+
 
             return View(post);
         }
@@ -130,6 +136,22 @@ namespace WebBlog.Controllers
                 db.Dispose();
             }
             base.Dispose(disposing);
+        }
+
+        [HttpPost]
+        public ActionResult Upload()
+        {
+            string directory = HttpContext.Server.MapPath("~/Content/img/");
+
+            HttpPostedFileBase photo = Request.Files["photo"];
+
+            if (photo != null && photo.ContentLength > 0)
+            {
+                var fileName = Path.GetFileName(photo.FileName);
+                photo.SaveAs(Path.Combine(directory, fileName));
+            }
+
+            return RedirectToAction("/Create");
         }
     }
 }

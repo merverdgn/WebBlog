@@ -27,21 +27,7 @@ namespace WebBlog.Controllers
             return View(db.Posts.ToList().OrderByDescending(e => e.CREATEDATE).ToList().ToPagedList(pageNumber, pageSize));
         }
 
-        [HttpPost]
-        public ActionResult Upload()
-        {
-            string directory = HttpContext.Server.MapPath("~/Content/img/");
-
-            HttpPostedFileBase photo = Request.Files["photo"];
-
-            if (photo != null && photo.ContentLength > 0)
-            {
-                var fileName = Path.GetFileName(photo.FileName);
-                photo.SaveAs(Path.Combine(directory, fileName));
-            }
-
-            return RedirectToAction("Index");
-        }
+       
 
     }
 }
