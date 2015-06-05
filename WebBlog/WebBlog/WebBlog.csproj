@@ -4394,6 +4394,7 @@
     <Content Include="Views\PostPics\Details.cshtml" />
     <Content Include="Views\PostPics\Edit.cshtml" />
     <Content Include="Views\PostPics\Index.cshtml" />
+    <Content Include="Views\Home\Details.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

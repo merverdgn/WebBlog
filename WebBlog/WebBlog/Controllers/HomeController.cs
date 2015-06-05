@@ -6,6 +6,7 @@ using System.Web.Mvc;
 using WebBlog.Models;
 using PagedList;
 using System.IO;
+using System.Net;
 
 
 
@@ -28,6 +29,20 @@ namespace WebBlog.Controllers
         }
 
        
+
+        public ActionResult Details(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            Post post = db.Posts.Find(id);
+            if (post == null)
+            {
+                return HttpNotFound();
+            }
+            return View(post);
+        }
 
     }
 }

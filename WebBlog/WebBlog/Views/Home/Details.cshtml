@@ -1,0 +1,52 @@
+﻿@model WebBlog.Models.Post
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<!-- BEGIN PAGE LEVEL STYLES -->
+<link href="../../assets/admin/pages/css/blog.css" rel="stylesheet" type="text/css" />
+<link href="../../assets/admin/pages/css/news.css" rel="stylesheet" type="text/css" />
+<!-- END PAGE LEVEL STYLES -->
+
+<div class="row">
+    <div class="col-md-12 blog-page">
+        <div class="row">
+            <div class="col-md-9 article-block">
+                <h3 style="margin-top:0;">@Html.DisplayFor(model => model.TITLE)</h3>
+                <div class="blog-tag-data">
+                    <img src="../../assets/admin/pages/media/gallery/item_img.jpg" class="img-responsive" alt="">
+                    <div class="row">                      
+                        <div class="col-md-6 blog-tag-data-inner">
+                            <ul class="list-inline">
+                                <li>
+                                    <i class="fa fa-calendar"></i>
+                                    <a href="#">
+                                        @Html.DisplayFor(model => model.CREATEDATE)
+                                    </a>
+                                </li>
+                                <li>
+                                    <i class="fa fa-user"></i>
+                                    <a href="#">
+                                        @Html.DisplayFor(model => model.AUTHOR)
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <!--end news-tag-data-->
+                <div>
+                    <p>
+                        @Html.DisplayFor(model => model.CONTENT)
+                    </p>
+                 
+                </div>
+                <hr>
+
+            </div>
+
+        </div>
+    </div>
+</div>
+
