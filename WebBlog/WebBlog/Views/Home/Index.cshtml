@@ -35,6 +35,8 @@
     <div class="portlet-body">
         <div class="row">
             <div class="col-md-12 blog-page">
+
+
                 <div class="row">
                     <div class="col-md-9 col-sm-8 article-block">
 
@@ -140,10 +142,9 @@
 
 
                     @Html.PagedListPager(Model, page => Url.Action("Index", new { page, sortOrder = ViewBag.CurrentSort, currentFilter = ViewBag.CurrentFilter }))
+
                 </ul>
 
-
-              
             </div>
         </div>
     </div>

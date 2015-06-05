@@ -25,7 +25,7 @@ namespace WebBlog.Models
 
         public DbSet<Post> Posts { get; set; }
         public DbSet<User> Users { get; set; }
-
+        public DbSet<PostPic> PostPics {get;set;}
 
 
     }

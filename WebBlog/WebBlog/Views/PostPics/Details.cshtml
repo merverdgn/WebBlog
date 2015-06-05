@@ -1,0 +1,43 @@
+﻿@model WebBlog.Models.PostPic
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>PostPic</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.URL)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.URL)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.AUTHOR)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.AUTHOR)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.UPDATE)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.UPDATE)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.ID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

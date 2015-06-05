@@ -4089,6 +4089,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\LoginController.cs" />
+    <Compile Include="Controllers\PostPicsController.cs" />
     <Compile Include="Controllers\PostsController.cs" />
     <Compile Include="Controllers\SharedController.cs" />
     <Compile Include="Controllers\UsersController.cs" />
@@ -4103,8 +4104,13 @@
     <Compile Include="Migrations\201506010812358_UserMigration.Designer.cs">
       <DependentUpon>201506010812358_UserMigration.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201506051636367_PostPicMigration.cs" />
+    <Compile Include="Migrations\201506051636367_PostPicMigration.Designer.cs">
+      <DependentUpon>201506051636367_PostPicMigration.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Post.cs" />
+    <Compile Include="Models\PostPic.cs" />
     <Compile Include="Models\User.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -4383,6 +4389,11 @@
     <Content Include="Views\Users\Index.cshtml" />
     <Content Include="Views\Login\VerifyLogin.cshtml" />
     <Content Include="Views\Login\Logout.cshtml" />
+    <Content Include="Views\PostPics\Create.cshtml" />
+    <Content Include="Views\PostPics\Delete.cshtml" />
+    <Content Include="Views\PostPics\Details.cshtml" />
+    <Content Include="Views\PostPics\Edit.cshtml" />
+    <Content Include="Views\PostPics\Index.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -4391,7 +4402,7 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="App_Data\" />
+    <Folder Include="App_Data\test\" />
     <Folder Include="assets\global\plugins\angularjs\plugins\angular-file-upload\uploads\" />
     <Folder Include="assets\global\plugins\jquery-file-upload\server\php\files\thumbnail\" />
     <Folder Include="Content\css\" />
@@ -4405,6 +4416,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201506010812358_UserMigration.resx">
       <DependentUpon>201506010812358_UserMigration.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201506051636367_PostPicMigration.resx">
+      <DependentUpon>201506051636367_PostPicMigration.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
